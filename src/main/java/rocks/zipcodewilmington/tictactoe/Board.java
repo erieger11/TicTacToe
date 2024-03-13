@@ -11,86 +11,58 @@ public class Board {
         this.matrix = matrix;
     }
 
-    public Boolean isInFavorOfX() {
-        //Switch()
-//        case 1 : if the value of [0][0] .equals [0][1] && [0][2]
-//            return true
-//            break;
-        // case 2 :  if the value of [1][0] .equals [1][1] && [1][2]
-//            return true
-//            break;
-        //case 3 :   if the value of [2][0] .equals [2][1] && [2][2]
-//            return true
-//            break;
-        //case 4 :  if the value of [0][0] .equals [1][0] && [2][0]
-//            return true
-//            break;
-//        case 5 : if the value of [0][1] .equals [1][1] && [2][1]
-//            return true
-//            break;
-//        case 6 : if the value of [0][2] .equals [1][2] && [2][2]
-//            return true
-//            break;
-//        case 7 : if the value of [0][0] .equals [1][1] && [2][2]
-//            return true
-//            break;
-//        case 8 : if the value of [2][0] .equals [1][1] && [0][2]
-//            return true
-//            break;
-//        default : return false
-
-        return null;
+    public Character[][] getMatrix() {
+        return matrix;
     }
 
-    public Boolean isInFavorOfO() {
-        //Switch()
-//        case 1 : if the value of [0][0] .equals [0][1] && [0][2]
-//            return true
-//            break;
-       // case 2 :  if the value of [1][0] .equals [1][1] && [1][2]
-//            return true
-//            break;
-        //case 3 :   if the value of [2][0] .equals [2][1] && [2][2]
-//            return true
-//            break;
-        //case 4 :  if the value of [0][0] .equals [1][0] && [2][0]
-//            return true
-//            break;
-//        case 5 : if the value of [0][1] .equals [1][1] && [2][1]
-//            return true
-//            break;
-//        case 6 : if the value of [0][2] .equals [1][2] && [2][2]
-//            return true
-//            break;
-//        case 7 : if the value of [0][0] .equals [1][1] && [2][2]
-//            return true
-//            break;
-//        case 8 : if the value of [2][0] .equals [1][1] && [0][2]
-//            return true
-//            break;
-//        default : return false
+    public Boolean isInFavorOfX(Character[][] matrix) {
+        for (int i = 0; i < 3; i++) {
+            if (matrix[0][i].equals('X') && matrix[1][i].equals('X') && matrix[2][i].equals('X')) {
+                return true;
+            } else if (matrix[i][0].equals('X') && matrix[i][1].equals('X') && matrix[i][2].equals('X')) {
+                return true;
+            }
+        }
 
-
-
-        return null;
+        if (matrix[0][0].equals('X') && matrix[1][1].equals('X') && matrix[2][2].equals('X')) {
+                return true;
+                }
+        if (matrix[2][0].equals('X') && matrix[1][1].equals('X') && matrix[0][2].equals('X')){
+                return true;
+        }
+        return false;
     }
 
-    public Boolean isTie() {
-        //if isInFavorOfX() is false &&  if isInFavorOfO() Assert.assertfalse ???
+    public Boolean isInFavorOfO(Character[][] matrix) {
+        for (int i = 0; i < 3; i++) {
+            if (matrix[0][i].equals('O') && matrix[1][i].equals('O') && matrix[2][i].equals('O')) {
+                return true;
+            } else if (matrix[i][0].equals('O') && matrix[i][1].equals('O') && matrix[i][2].equals('O')) {
+                return true;
+            }
+        }
 
-        //return System.out.println "The game ended in a draw"
-
-        return null;
+        if (matrix[0][0].equals('O') && matrix[1][1].equals('O') && matrix[2][2].equals('O')) {
+            return true;
+        }
+        if (matrix[2][0].equals('O') && matrix[1][1].equals('O') && matrix[0][2].equals('O')){
+            return true;
+        }
+        return false;
     }
 
-    public String getWinner() {
-        //if isInFavorOfX() Assert.assertTRUE = true... System.out.println ("X is the Winner)
-        //else if isInFavorOfO() Assert.assertTRUE = true... System.out.println ("X is the Winner)
-        //else isTie()
+        public Boolean isTie () {
+            return isInFavorOfX(matrix).equals(false) && (isInFavorOfO(matrix).equals(false));
+        }
 
-
-        return null;
+        public String getWinner () {
+            if (isInFavorOfX(matrix)){
+                return"X";
+            }else if(isTie()) {
+                return "";
+            }
+            return "O";
+        }
     }
 
-}
 //Ethan
